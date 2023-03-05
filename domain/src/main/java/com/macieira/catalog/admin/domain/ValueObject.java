@@ -1,0 +1,3 @@
+package com.macieira.catalog.admin.domain;
+
+public abstract class ValueObject {}
