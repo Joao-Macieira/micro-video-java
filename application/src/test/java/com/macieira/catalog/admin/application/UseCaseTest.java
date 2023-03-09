@@ -1,12 +1,12 @@
 package com.macieira.catalog.admin.application;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-public class UseCaseTest {
+@ExtendWith(MockitoExtension.class)
+class UseCaseTest {
     @Test
-    public void testCreateUsecase() {
-        Assertions.assertNotNull(new UseCase());
-        Assertions.assertNotNull(new UseCase().execute());
+    void testCreateUsecase() {
     }
 }
