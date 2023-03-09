@@ -3,11 +3,15 @@ package com.macieira.catalog.admin.application.category.create;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
 import java.util.Objects;
 
-import com.macieira.catalog.admin.domain.category.Category;
 import com.macieira.catalog.admin.domain.category.CategoryGateway;
 
 class CreateCategoryUseCaseTest {
@@ -20,25 +24,24 @@ class CreateCategoryUseCaseTest {
         final var aCommand = CreateCategoryCommand.with(expectedName, expectedDescription, expectedIsActive);
 
         final CategoryGateway categoryGateway = Mockito.mock(CategoryGateway.class);
-        Mockito.when(categoryGateway.create(Mockito.any()))
+        when(categoryGateway.create(any()))
             .thenAnswer(returnsFirstArg());
 
-        final var useCase = new CreateCategoryUseCase();
+        final var useCase = new DefaultCreateCategoryUseCase(categoryGateway);
 
         final var actualOutput = useCase.execute(aCommand);
 
         Assertions.assertNotNull(actualOutput);
-        Assertions.assertNotNull(actualOutput.getId());
+        Assertions.assertNotNull(actualOutput.id());
 
-        Mockito.verify(categoryGateway, Mockito.times(1)).create(Mockito.argThat(aCategory -> {
-             
-            return Objects.equals(expectedName, aCategory.getName())
-                    && Objects.equals(expectedDescription, aCategory.getDescription())
-                    && Objects.equals(expectedIsActive, aCategory.isActive())
-                    && Objects.nonNull(aCategory.getId())
-                    && Objects.nonNull(aCategory.getCreatedAt())
-                    && Objects.nonNull(aCategory.getUpdatedAt())
-                    && Objects.isNull(aCategory.getDeletedAt());
-        }));
+        Mockito.verify(categoryGateway, times(1)).create(argThat(aCategory ->
+            Objects.equals(expectedName, aCategory.getName())
+                && Objects.equals(expectedDescription, aCategory.getDescription())
+                && Objects.equals(expectedIsActive, aCategory.isActive())
+                && Objects.nonNull(aCategory.getId())
+                && Objects.nonNull(aCategory.getCreatedAt())
+                && Objects.nonNull(aCategory.getUpdatedAt())
+                && Objects.isNull(aCategory.getDeletedAt())
+        ));
     }
 }
