@@ -61,7 +61,6 @@ class CreateCategoryUseCaseTest {
         final var expectedDescription = "Most viewed category";
         final var expectedIsActive = true;
         final var expectedErrorMessage = "'name' should not be null";
-        final var expectedErrorCount = 1;
 
         final var aCommand = CreateCategoryCommand.with(expectedName, expectedDescription, expectedIsActive);
 
