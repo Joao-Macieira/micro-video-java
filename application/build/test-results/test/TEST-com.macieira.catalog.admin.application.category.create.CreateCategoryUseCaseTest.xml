@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.macieira.catalog.admin.application.category.create.CreateCategoryUseCaseTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-03-12T15:07:50" hostname="MacBook-Air-de-Joao.local" time="0.195">
+  <properties/>
+  <testcase name="givenAValidCommand_whenGatewayThrowsRandomException_thenReturnAException()" classname="com.macieira.catalog.admin.application.category.create.CreateCategoryUseCaseTest" time="0.189"/>
+  <testcase name="givenAnInvalidName_whenCalssCreateCategory_thenShouldReturnDomainException()" classname="com.macieira.catalog.admin.application.category.create.CreateCategoryUseCaseTest" time="0.001"/>
+  <testcase name="givenAValidCommand_whenCallsCreateCategory_thenReturnCategoryId()" classname="com.macieira.catalog.admin.application.category.create.CreateCategoryUseCaseTest" time="0.002"/>
+  <testcase name="givenAValidCommandWithInactiveCategory_whenCallsCreateCategory_thenReturnInactiveCategoryId()" classname="com.macieira.catalog.admin.application.category.create.CreateCategoryUseCaseTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
